@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: my api specs
+  version: 1.0.1
+  description: Hello
+externalDocs:
+  description: Visit the code
+  url: http://github.io
+servers:
+  - url: https://localhost:8080
+paths:
+  /customers:
+    get:
+      description: get all customers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    put:
+      description: update and existing customer
+      requestBody:
+        description: a Customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+components:
+  schemas:
+    Customer:
+      type: object
+      description: My Customer object
+      properties:
+        id:
+          type: integer
+          example: 123
+        name:
+          type: string
+          example: whatever
+        
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        username:
+          type: string
+          example: fehguy
